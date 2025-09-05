@@ -1,5 +1,6 @@
 require("dog.set")
 require("dog.remap")
+
 -- for error inline debug highlighting I think
 vim.diagnostic.config({ virtual_text = true })
 

@@ -9,6 +9,7 @@ vim.opt.guicursor = {
 -- relative numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.o.cursorline = true
 
 -- tab space = 4
 vim.opt.tabstop = 4
@@ -39,5 +40,5 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 
 -- idk looks cool
-vim.opt.colorcolumn = "100"
+vim.opt.colorcolumn = "130"
 

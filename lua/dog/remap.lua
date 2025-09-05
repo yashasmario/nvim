@@ -1,5 +1,5 @@
 -- netrw
-vim.keymap.set("n", "<leader>fv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 vim.opt.guicursor = {
     "n-v-c:block",
