@@ -9,7 +9,8 @@ vim.opt.guicursor = {
 -- relative numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
-vim.o.cursorline = true
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
 
 -- tab space = 4
 vim.opt.tabstop = 4
