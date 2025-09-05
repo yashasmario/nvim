@@ -1,4 +1,5 @@
 require("dog")
+require("dog.init")
 
 vim.lsp.enable('pyright')
 vim.lsp.enable('lua-language-server')

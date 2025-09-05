@@ -1,3 +1,11 @@
+vim.g.mapleader = " " 
+
+vim.opt.guicursor = {
+  "n-v-c:block",
+  "i:block-blinkwait500-blinkon400-blinkoff250",
+  "r-cr:hor20",
+}
+
 -- relative numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -15,11 +23,12 @@ vim.opt.wrap = false
 
 -- you can use undo tree from the past(days)
 vim.opt.swapfile = false
+vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
--- search convenience
-vim.opt.hlsearch = false
+-- search convenience highlight search and incremental search
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 -- more convenience
@@ -30,6 +39,5 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 
 -- idk looks cool
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "100"
 
-vim.g.mapleader = " " 

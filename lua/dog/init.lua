@@ -1,6 +1,5 @@
-require("dog.remap")
 require("dog.set")
-
+require("dog.remap")
 -- for error inline debug highlighting I think
 vim.diagnostic.config({ virtual_text = true })
 
@@ -12,3 +11,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank()
     end,
 })
+
+-- clock
+local function update_winbar()
+  vim.opt.winbar = "%= %{strftime('%H:%M')}"
+  vim.cmd("redrawstatus")
+end
+update_winbar()
+vim.fn.timer_start(100, function()
+  update_winbar()
+end, { ['repeat'] = -1 })
+
