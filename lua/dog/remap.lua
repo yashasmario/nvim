@@ -1,6 +1,7 @@
 -- netrw
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
+-- block caret
 vim.opt.guicursor = {
     "n-v-c:block",
     "i:block-blinkwait700-blinkon400-blinkoff250",
@@ -29,3 +30,27 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 
 -- edit word globally (word that cursor is under)
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- jump to definition
+vim.keymap.set("n", "gd",vim.lsp.buf.definition, opts)
+
+-- open config folder netrw (compatible with any os)
+local last_file, last_pos
+vim.api.nvim_create_user_command("Conf", function()
+  -- save current file + caret position
+  last_file = vim.fn.expand("%:p")
+  last_pos = vim.api.nvim_win_get_cursor(0)
+
+  vim.cmd("e " .. vim.fn.stdpath("config"))
+end, {})
+-- go back to previous buffer
+vim.api.nvim_create_user_command("Back", function()
+  if last_file and vim.fn.filereadable(last_file) == 1 then
+    vim.cmd("e " .. last_file)
+    if last_pos then
+      vim.api.nvim_win_set_cursor(0, last_pos)
+    end
+  else
+    print("No previous file recorded")
+  end
+end, {})

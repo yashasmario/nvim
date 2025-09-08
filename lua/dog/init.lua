@@ -1,33 +1,6 @@
 require("dog.set")
 require("dog.remap")
 
--- Packer stuff (makes sure packer is installed if you're cloning to a diff machine)
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
-end
-
-local packer_bootstrap = ensure_packer()
-
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  -- My plugins here
-  -- use 'foo1/bar1.nvim'
-  -- use 'foo2/bar2.nvim'
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
-
 -- for error inline debug highlighting I think
 vim.diagnostic.config({ virtual_text = true })
 
@@ -41,12 +14,23 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- clock
+-- the timer communicates colors.lua file to change themes
+
+vim.g.base_colorscheme = "kanagawa-wave"
 local function update_winbar()
   vim.opt.winbar = "%= %{strftime('%H:%M')}"
+
+  local hour = tonumber(os.date("%H"))
+  local mode = (hour >= 21 or hour < 6) and "dark" or "light"
+
+  if vim.g.daynight ~= mode then
+    vim.g.daynight = mode
+    vim.cmd("colorscheme " .. vim.g.base_colorscheme)
+  end
   vim.cmd("redrawstatus")
 end
 update_winbar()
-vim.fn.timer_start(100, function()
+vim.fn.timer_start(60 * 1000, function()
   update_winbar()
 end, { ['repeat'] = -1 })
 
