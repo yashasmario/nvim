@@ -1,6 +1,8 @@
 require("dog")
 require("dog.init")
 
+require("vim.lsp.health").check()
+
 -- packer stuff (makes sure packer is installed if you're cloning to a diff machine)
 local ensure_packer = function()
   local fn = vim.fn
@@ -13,10 +15,10 @@ local ensure_packer = function()
   return false
 end
 local packer_bootstrap = ensure_packer()
--- Start Packer
+-- start Packer
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  -- Automatically sync if Packer was just installed
+-- automatically sync if Packer was just installed
   if packer_bootstrap then
     require('packer').sync()
   end
@@ -28,3 +30,9 @@ vim.lsp.enable('lua-language-server')
 vim.lsp.enable('clangd')
 vim.lsp.enable('ziggy')
 vim.lsp.enable('ts_ls')
+
+-- more lsp stuff (asks active lsp for <C-x><C-o> autocompletions)
+-- function that runs when LSP attaches to a buffer
+local on_attach = function(client, bufnr)
+  vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+end

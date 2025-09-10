@@ -16,3 +16,7 @@ function Colors(color)
 end
 
 Colors()
+
+vim.api.nvim_create_autocmd("ColorScheme",{
+    callback = Colors,
+})

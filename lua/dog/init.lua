@@ -2,7 +2,7 @@ require("dog.set")
 require("dog.remap")
 
 -- for error inline debug highlighting I think
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({ virtual_text = { prefix = "●" } })
 
 -- highlighting when yanking so you know you yanked (idk i stole it from lazy)
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -33,4 +33,3 @@ update_winbar()
 vim.fn.timer_start(60 * 1000, function()
   update_winbar()
 end, { ['repeat'] = -1 })
-
