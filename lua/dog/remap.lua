@@ -32,7 +32,7 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- jump to definition
-vim.keymap.set("n", "gd",vim.lsp.buf.definition, opts)
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 
 -- open config folder netrw (compatible with any os)
 local last_file, last_pos

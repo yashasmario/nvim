@@ -42,5 +42,4 @@ vim.opt.signcolumn = "yes"
 vim.opt.updatetime = 50
 
 -- idk looks cool
-vim.opt.colorcolumn = "130"
-
+vim.opt.colorcolumn = "100"
