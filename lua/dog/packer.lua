@@ -43,7 +43,7 @@ return require('packer').startup(function(use)
 		'mbbill/undotree'
 	}
 
-    -- git tree viewer thing
+    --git tree viewer thing
 	use {
 
 		'tpope/vim-fugitive'
@@ -56,4 +56,13 @@ return require('packer').startup(function(use)
         'hrsh7th/cmp-nvim-lsp',
         'L3MON4D3/LuaSnip',
 	}
+
+    --autopairs
+    use {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = function()
+            require("nvim-autopairs").setup {}
+        end
+    }
 end)
