@@ -1,13 +1,6 @@
 -- netrw
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
--- block caret
-vim.opt.guicursor = {
-    "n-v-c:block",
-    "i:block-blinkwait700-blinkon400-blinkoff250",
-    "r-cr:hor20",
-}
-
 -- moving code block around in visual
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

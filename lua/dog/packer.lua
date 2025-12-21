@@ -53,22 +53,32 @@ return require('packer').startup(function(use)
 
     --autopairs
     use {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
+        'windwp/nvim-autopairs',
+        event = 'InsertEnter',
         config = function()
-            require("nvim-autopairs").setup {}
+            require('nvim-autopairs').setup {}
         end
     }
 
     --neogit
     use {
-        "NeogitOrg/neogit",
+        'NeogitOrg/neogit',
         requires = { { 
-            "nvim.lua/plenary.nvim",
-            "sindrets/diffview.nvim",
-
-            "nvim-telescope/telescope.nvim"
+            'nvim.lua/plenary.nvim',
+            'sindrets/diffview.nvim',
+            'nvim-telescope/telescope.nvim'
         } },
         cmd = { 'Neogit' }
+    }
+
+    --orgmode (emacs orgmode in neovim)
+    use {
+        'nvim-orgmode/orgmode',
+        config = function()
+            require('orgmode').setup({
+                org_agenda_files = '~/orgfiles/**/*',
+                org_default_notes_file = '~/orgfiles/refile.org',
+            })
+        end       
     }
 end)

@@ -1,9 +1,10 @@
 vim.g.mapleader = " " 
 
+-- block caret
 vim.opt.guicursor = {
-  "n-v-c:block",
-  "i:block-blinkwait500-blinkon400-blinkoff250",
-  "r-cr:hor20",
+    "n-v-c:block",
+    "i:block-blinkwait700-blinkon400-blinkoff250",
+    "r-cr:hor20",
 }
 
 -- relative numbers
