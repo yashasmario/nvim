@@ -43,12 +43,6 @@ return require('packer').startup(function(use)
 		'mbbill/undotree'
 	}
 
-    --git tree viewer thing
-	use {
-
-		'tpope/vim-fugitive'
-	}
-
     --lsp stuff
 	use {
         'neovim/nvim-lspconfig',
@@ -64,5 +58,17 @@ return require('packer').startup(function(use)
         config = function()
             require("nvim-autopairs").setup {}
         end
+    }
+
+    --neogit
+    use {
+        "NeogitOrg/neogit",
+        requires = { { 
+            "nvim.lua/plenary.nvim",
+            "sindrets/diffview.nvim",
+
+            "nvim-telescope/telescope.nvim"
+        } },
+        cmd = { 'Neogit' }
     }
 end)
