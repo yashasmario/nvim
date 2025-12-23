@@ -64,9 +64,7 @@ return require('packer').startup(function(use)
     use {
         'NeogitOrg/neogit',
         requires = { { 
-            'nvim.lua/plenary.nvim',
             'sindrets/diffview.nvim',
-            'nvim-telescope/telescope.nvim'
         } },
         cmd = { 'Neogit' }
     }
@@ -74,11 +72,5 @@ return require('packer').startup(function(use)
     --orgmode (emacs orgmode in neovim)
     use {
         'nvim-orgmode/orgmode',
-        config = function()
-            require('orgmode').setup({
-                org_agenda_files = '~/orgfiles/**/*',
-                org_default_notes_file = '~/orgfiles/refile.org',
-            })
-        end       
     }
 end)
