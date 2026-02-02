@@ -13,23 +13,26 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
+
 -- clock
--- the timer communicates colors.lua file to change themes
+local function intClock()
+    -- colorscheme updation stuff
+    vim.cmd[[colorscheme monoglow]]
+    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ffffff", bold = true, bg = "none" }) -- highlinting current line
+    vim.api.nvim_set_hl(0, "LineNr", {fg = "#555555", bg = "none" }) -- removes annoying line number background
+    vim.o.statuscolumn = "%s%=%{v:relnum == 0 ? v:lnum : v:relnum} |  "
 
-vim.g.base_colorscheme = "kanagawa-wave"
-local function update_winbar()
-  vim.opt.winbar = "%= %{strftime('%H:%M')}"
+    -- winbar updation
+    vim.opt.winbar = "%= %{strftime('%H:%M')}"
 
-  local hour = tonumber(os.date("%H"))
-  local mode = (hour >= 21 or hour < 6) and "dark" or "light"
+    local hour = tonumber(os.date("%H"))
 
-  if vim.g.daynight ~= mode then
-    vim.g.daynight = mode
-    vim.cmd("colorscheme " .. vim.g.base_colorscheme)
-  end
-  vim.cmd("redrawstatus")
+    vim.cmd("redrawstatus")
+    vim.api.nvim_set_hl(0, "WinBar", { link = "Normal" })
+
 end
-update_winbar()
+intClock()
+
 vim.fn.timer_start(60 * 1000, function()
-  update_winbar()
+    intClock()
 end, { ['repeat'] = -1 })

@@ -14,13 +14,16 @@ return require('packer').startup(function(use)
 	}
 
     -- colorscheme
-	use{
-		'rebelot/kanagawa.nvim',
-		as = 'kanagawa',
-		config = function()
-			vim.cmd("colorscheme kanagawa-wave")
-		end
-	}
+    use{
+        'wnkz/monoglow.nvim',
+        config = function()
+            require('monoglow').setup {
+                -- leave this setup function empty for default config
+                -- or refer to the configuration section
+                -- for configuration options
+            }
+        end
+    }
 
     --treesitter
 	use {
