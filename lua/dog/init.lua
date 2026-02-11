@@ -13,7 +13,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
 })
 
-
 -- clock
 local function intClock()
     -- colorscheme updation stuff
@@ -29,6 +28,7 @@ local function intClock()
 
     vim.cmd("redrawstatus")
     vim.api.nvim_set_hl(0, "WinBar", { link = "Normal" })
+    vim.api.nvim_set_hl(0, "WinBarNC", { link = "Normal" })
 
 end
 intClock()

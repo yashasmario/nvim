@@ -4,16 +4,15 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
-    
-    -- telescope
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.8',
-		requires = { { 'nvim-lua/plenary.nvim' } }
-	}
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-    -- colorscheme
+    -- telescope
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
+-- colorscheme
     use{
         'wnkz/monoglow.nvim',
         config = function()
@@ -26,38 +25,34 @@ return require('packer').startup(function(use)
     }
 
     --treesitter
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate'
-	}
-	use {
-		'nvim-treesitter/playground'
-	}
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+    }
 
     --harpoon
-	use {
+    use {
 
-		'theprimeagen/harpoon'
-	}
+        'theprimeagen/harpoon'
+    }
 
     --undotree
-	use {
+    use {
 
-		'mbbill/undotree'
-	}
+        'mbbill/undotree'
+    }
 
     --lsp stuff
-	use {
+    use {
         'neovim/nvim-lspconfig',
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-nvim-lsp',
         'L3MON4D3/LuaSnip',
-	}
+    }
 
     --autopairs
     use {
         'windwp/nvim-autopairs',
-        event = 'InsertEnter',
         config = function()
             require('nvim-autopairs').setup {}
         end
@@ -72,8 +67,28 @@ return require('packer').startup(function(use)
         cmd = { 'Neogit' }
     }
 
-    --orgmode (emacs orgmode in neovim)
+    -- neotree
+    use({
+        'nvim-neo-tree/neo-tree.nvim',
+        branch = "v3.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "nvim-tree/nvim-web-devicons",
+        }
+    })
+
+    --dashboard (maybe some other time)
+    --[[
     use {
-        'nvim-orgmode/orgmode',
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup {
+                -- config
+            }
+        end,
+        requires = {'nvim-tree/nvim-web-devicons'}
     }
+    ]]
 end)
