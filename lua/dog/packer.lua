@@ -58,27 +58,7 @@ return require('packer').startup(function(use)
         end
     }
 
-    --neogit
-    use {
-        'NeogitOrg/neogit',
-        requires = { { 
-            'sindrets/diffview.nvim',
-        } },
-        cmd = { 'Neogit' }
-    }
-
-    -- neotree
-    use({
-        'nvim-neo-tree/neo-tree.nvim',
-        branch = "v3.x",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            "nvim-tree/nvim-web-devicons",
-        }
-    })
-
-    --dashboard (maybe some other time)
+       --dashboard (maybe some other time)
     --[[
     use {
         'nvimdev/dashboard-nvim',
