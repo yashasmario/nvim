@@ -25,14 +25,8 @@ require('packer').startup(function(use)
 end)
 
 -- lsp
-vim.lsp.enable('pyright')
-vim.lsp.enable('lua-language-server')
-vim.lsp.enable('clangd')
-vim.lsp.enable('zig')
-vim.lsp.enable('ts_ls')
-vim.lsp.enable('gopls')
+vim.lsp.enable({'pyright', 'lua_ls', 'clangd', 'zig', 'ts_ls', 'gopls'})
 
--- more lsp stuff (asks active lsp for <C-x><C-o> autocompletions)
 -- function that runs when LSP attaches to a buffer
 local on_attach = function(client, bufnr)
   vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"

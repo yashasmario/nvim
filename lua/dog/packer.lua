@@ -12,7 +12,7 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
--- colorscheme
+    -- colorscheme
     use{
         'wnkz/monoglow.nvim',
         config = function()
@@ -58,17 +58,4 @@ return require('packer').startup(function(use)
         end
     }
 
-       --dashboard (maybe some other time)
-    --[[
-    use {
-        'nvimdev/dashboard-nvim',
-        event = 'VimEnter',
-        config = function()
-            require('dashboard').setup {
-                -- config
-            }
-        end,
-        requires = {'nvim-tree/nvim-web-devicons'}
-    }
-    ]]
 end)

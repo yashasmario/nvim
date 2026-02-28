@@ -1,9 +1,6 @@
 require("dog.set")
 require("dog.remap")
 
--- for error inline debug highlighting I think
-vim.diagnostic.config({ virtual_text = { prefix = "●" } })
-
 -- highlighting when yanking so you know you yanked (idk i stole it from lazy)
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Highlight when yanking',
@@ -20,16 +17,6 @@ local function intClock()
     vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ffffff", bold = true, bg = "none" }) -- highlinting current line
     vim.api.nvim_set_hl(0, "LineNr", {fg = "#555555", bg = "none" }) -- removes annoying line number background
     vim.o.statuscolumn = "%s%=%{v:relnum == 0 ? v:lnum : v:relnum} |  "
-
-    -- winbar updation
-    vim.opt.winbar = "%= %{strftime('%H:%M')}"
-
-    local hour = tonumber(os.date("%H"))
-
-    vim.cmd("redrawstatus")
-    vim.api.nvim_set_hl(0, "WinBar", { link = "Normal" })
-    vim.api.nvim_set_hl(0, "WinBarNC", { link = "Normal" })
-
 end
 intClock()
 
