@@ -31,9 +31,9 @@ return{
         },
         config = function()
             local builtin = require('telescope.builtin')
-            vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "telescope find files" })
+            vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "telescope find files" })
             vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-            vim.keymap.set('n', '<C-p>' , builtin.git_files, {desc = 'Telescope git files'})
+            vim.keymap.set('n', '<leader>g' , builtin.git_files, {desc = 'Telescope git files'})
             vim.keymap.set('n', '<leader>fs', function()
                 builtin.grep_string({ search = vim.fn.input("Grep > ") });	
             end)
@@ -102,11 +102,11 @@ return{
             vim.keymap.set("n", "<leader>a", mark.add_file)
             vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
 
-            vim.keymap.set("n", "1<leader>", function() ui.nav_file(1) end)
-            vim.keymap.set("n", "2<leader>", function() ui.nav_file(2) end)
-            vim.keymap.set("n", "3<leader>", function() ui.nav_file(3) end)
-            vim.keymap.set("n", "4<leader>", function() ui.nav_file(4) end)
-            vim.keymap.set("n", "5<leader>", function() ui.nav_file(5) end)
+            vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end)
+            vim.keymap.set("n", "<leader>2", function() ui.nav_file(2) end)
+            vim.keymap.set("n", "<leader>3", function() ui.nav_file(3) end)
+            vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end)
+            vim.keymap.set("n", "<leader>5", function() ui.nav_file(5) end)
         end
     },
 
@@ -114,6 +114,14 @@ return{
         'mbbill/undotree',
         config = function()
             vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+        end
+    },
+    {
+        'OXY2DEV/markview.nvim',
+        lazy = false,
+        dependencies = {'saghen/blink.cmp'},
+        config = function()
+            vim.keymap.set("n", "<leader>m", function() vim.cmd("Markview toggle") end)
         end
     },
 }

@@ -39,7 +39,7 @@ vim.opt.incsearch = true
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
-vim.opt.updatetime = 50
+vim.opt.updatetime = 10
 vim.opt.colorcolumn = "100"
 
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
@@ -61,8 +61,11 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 
-vim.o.statuscolumn = "%s%=%{v:relnum == 0 ? v:lnum : v:relnum}  "
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
 
+vim.keymap.set("n", "<leader>cc", "mcggVG\"+y`c")
+
+vim.o.statuscolumn = "%s%=%{v:relnum == 0 ? v:lnum : v:relnum}  "
 
 -- bootstrapper
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -89,3 +92,12 @@ vim.cmd[[colorscheme monoglow-z]]
 
 vim.lsp.enable({'pyright', 'lua_ls', 'clangd', 'zls', 'ts_ls', 'gopls', 'tinymist', 'rust_analyzer'})
 
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = "●", -- or "■", "▎", etc
+    },
+    float = {
+        border = "rounded",
+    },
+    update_in_insert = false,
+})
